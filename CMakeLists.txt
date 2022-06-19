@@ -7,9 +7,35 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(urdf REQUIRED)
+
+include_directories(
+  include
+)
+
+add_executable(buildit_controller
+  src/buildit_controller.cpp
+  src/com_buildit.cpp
+  src/uart.cpp
+)
+
+ament_target_dependencies(buildit_controller
+  rclcpp
+  geometry_msgs
+  nav_msgs
+  sensor_msgs
+  tf2
+  tf2_ros
+  urdf
+)
+
+install(TARGETS buildit_controller DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

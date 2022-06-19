@@ -131,7 +131,8 @@ int sendGetLogCmd(int fd, uint8_t devid, uint16_t startIdx, uint16_t readSize)
   cmd[6] = readSize & 0xFF;
   cmd[7] = readSize >> 8;
 
-  return sendCmdBuildIt(fd, cmd, num_cmd);}
+  return sendCmdBuildIt(fd, cmd, num_cmd);
+}
 
 int sendGetLogInfoCmd(int fd, uint8_t devid)
 {
@@ -332,7 +333,8 @@ int sendSetRefPositionCmd(int fd, uint8_t devid, int32_t pos)
   cmd[6] = pos >> 16;
   cmd[7] = pos >> 24;
 
-  return sendCmdBuildIt(fd, cmd, num_cmd);}
+  return sendCmdBuildIt(fd, cmd, num_cmd);
+}
 
 int sendSetRefVelocityCmd(int fd, uint8_t devid, int16_t vel)
 {
